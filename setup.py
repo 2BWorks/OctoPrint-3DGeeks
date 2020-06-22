@@ -14,14 +14,29 @@ plugin_package = "octoprint_geeks3d"
 plugin_name = "OctoPrint-3DGeeks"
 
 # The plugin's version. Can be overwritten within OctoPrint's internal data via __plugin_version__ in the plugin module
-plugin_version = "0.1.0"
+plugin_version = "1.0.0"
 
 # The plugin's description. Can be overwritten within OctoPrint's internal data via __plugin_description__ in the plugin
 # module
-plugin_description = """TODO"""
+plugin_description = """
+This plugin is created as a companion plugin to the 3D Geeks app.
+
+It allows you to connect your OctoPrint instance with the 3D Geeks app for quick one-click configuration. Which removes the needs to manually type in IP addresses en port numbers, which is super error-prone.
+
+The plugin also allows you to receive push notifications with a status update from your OctoPrint instance. It currently supports the following events:
+
+Print started
+Print finished
+Print failed
+Print progress
+Printer connected
+Printer disconnected
+Octoprint startup
+Octoprint shutdown
+"""
 
 # The plugin's author. Can be overwritten within OctoPrint's internal data via __plugin_author__ in the plugin module
-plugin_author = "Toby"
+plugin_author = "Toby from 3D Geeks"
 
 # The plugin's author's mail address.
 plugin_author_email = "apps@2b.work"
