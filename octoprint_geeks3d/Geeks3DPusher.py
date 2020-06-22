@@ -8,7 +8,6 @@ class Geeks3DPusher:
 
 
 	def send_push(self, payload):
-		print("Send a push")
 		headers = {
 			"Content-type": "application/json"
 		}

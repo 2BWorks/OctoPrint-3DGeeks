@@ -36,7 +36,7 @@ class Geeks3DPlugin(
 
 	def __init__(self):
 		super(Geeks3DPlugin, self).__init__()
-		self._logger = logging.getLogger("octoprint.plugins.printoid")
+		self._logger = logging.getLogger("octoprint.plugins.geeks3d")
 		self.logger = self._logger
 		self.settings = self._settings
 		self.event_handler = Geeks3DEventHandler(self)
@@ -126,8 +126,8 @@ class Geeks3DPlugin(
 		# Plugin here. See https://docs.octoprint.org/en/master/bundledplugins/softwareupdate.html
 		# for details.
 		return dict(
-			Geeks3D=dict(
-				displayName="3dgeeks Plugin",
+			geeks3d=dict(
+				displayName="3D Geeks: OctoPrint Plugin",
 				displayVersion=self._plugin_version,
 
 				# version check: github repository
@@ -148,7 +148,6 @@ class Geeks3DPlugin(
 
 	def on_event(self, event, payload):
 		self.event_handler.handle_event( event, payload)
-
 
 	def on_after_startup(self):
 		t = threading.Timer(0,self.get_ip_and_save)
@@ -189,7 +188,7 @@ class Geeks3DPlugin(
 
 # ("OctoPrint-PluginSkeleton"), you may define that here. Same goes for the other metadata derived from setup.py that
 # can be overwritten via __plugin_xyz__ control properties. See the documentation for that.
-__plugin_name__ = "3D Geeks Plugin"
+__plugin_name__ = "3D Geeks: OctoPrint Plugin"
 
 
 # Starting with OctoPrint 1.4.0 OctoPrint will also support to run under Python 3 in addition to the deprecated
