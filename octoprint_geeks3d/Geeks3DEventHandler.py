@@ -85,11 +85,10 @@ class Geeks3DEventHandler:
 					self.create_payload_dict("startup")
 				)
 
-
 	def create_payload_dict(self, event):
 		return dict(
 			event=event,
-			print=self.current_file,
+			file=self.current_file,
 			percent=self.progress
 		)
 

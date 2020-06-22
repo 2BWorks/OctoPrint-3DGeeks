@@ -17,7 +17,7 @@ class Geeks3DPusher:
 			"token" : self._plugin.settings.get(["push_token"]),
 			"event" : payload["event"],
 			"printer" : self._plugin.settings.global_get(["appearance", "name"]),
-			"print" : payload["print"],
+			"print" : payload["file"],
 			"percent" : payload["percent"]
 		}
 		requests.post(url, headers=headers, json=data)
