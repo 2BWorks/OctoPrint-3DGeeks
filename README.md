@@ -1,6 +1,6 @@
 # OctoPrint-3DGeeks (Coming soon to Play Store)
 
-This plugin is created as a companion plugin to the [3D Geeks](https://www.3dgeeks.app) app. 
+This plugin is created as a companion plugin to the [3D Geeks](https://www.3dgeeks.app) app.
 
 It allows you to connect your OctoPrint instance with the 3D Geeks app for quick one-click configuration. Which removes the needs to manually type in IP addresses en port numbers, which is super error-prone.
 
@@ -33,15 +33,24 @@ Settings > OctoPrint settings
 ```
 Press the `+`-Icon in the bottom-right hand corner.
 
-Press the scan icon, scan the QR code you're being presented. If everything goes well all the nesecary fields will be filled in automatically for you. You can now press Test connection for a quick test of the connection to your OctoPrint instance. 
+Press the scan icon, scan the QR code you're being presented. If everything goes well all the nesecary fields will be filled in automatically for you. You can now press Test connection for a quick test of the connection to your OctoPrint instance.
 
 NOTE: Be sure you're Android device is connected to the same network as your OctoPrint instance, as they communicate through the local network. When the test succeeds you can press Create. Your OctoPrint instance is now saved and can receive files from 3D Geeks.
 
 NOTE: You can create as much OctoPrint instances as you desire. When uploading a file, the app will ask you which instance to upload to.
 
 ### Push notifications
-Enable remote notifications from within the app. And press the `Send test notification`-button from the 3D Geeks OctoPrint settings. If everything is filled in correctly you should receive a test notification on your phone. 
+Enable remote notifications from within the app. And press the `Send test notification`-button from the 3D Geeks OctoPrint settings. If everything is filled in correctly you should receive a test notification on your phone.
 
 Select the push notification categories which you would like to receive.
 
 Don't forget to save your OctoPrint instance on the app.
+
+# Disclaimer
+
+Sending push notifications happens via a proxy in the form of an AWS Lambda Function. Which on it's turn triggers an Firebase Message.
+If you don't want your OctoPrint instance to send requests to AWS, don't install this plugin.
+The called url is:
+```
+https://qx8eve27wk.execute-api.eu-west-2.amazonaws.com/prod/octoprint_push
+```
