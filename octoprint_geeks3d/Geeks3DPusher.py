@@ -16,7 +16,7 @@ class Geeks3DPusher:
 		data = {
 			"token" : self._plugin.settings.get(["push_token"]),
 			"event" : payload["event"],
-			"printer" : "OctoPrint",
+			"printer" : self._plugin.settings.global_get(["appearance", "name"]),
 			"print" : payload["print"],
 			"percent" : payload["percent"]
 		}

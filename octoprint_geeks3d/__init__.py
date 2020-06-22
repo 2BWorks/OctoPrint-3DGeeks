@@ -13,6 +13,9 @@ import octoprint.plugin
 import uuid
 import flask
 import logging
+import socket
+import threading
+import json
 
 from octoprint_geeks3d.Geeks3DApi import Geeks3DApi
 from octoprint_geeks3d.Geeks3DEventHandler import Geeks3DEventHandler
@@ -27,7 +30,8 @@ class Geeks3DPlugin(
 	octoprint.plugin.ProgressPlugin,
 	octoprint.plugin.ShutdownPlugin,
 	octoprint.plugin.EventHandlerPlugin,
-	octoprint.plugin.SimpleApiPlugin
+	octoprint.plugin.SimpleApiPlugin,
+	# octoprint.plugin.WizardPlugin
 ):
 
 	def __init__(self):
@@ -38,6 +42,15 @@ class Geeks3DPlugin(
 		self.event_handler = Geeks3DEventHandler(self)
 		self.pusher = Geeks3DPusher(self)
 		self.api = Geeks3DApi(self)
+
+
+	# Wizard mix
+	# def is_wizard_required(self):
+	# 	return True
+	#
+	# def get_wizard_version(self):
+	# 	return 2
+
 	# TemplatePlugin mixin
 
 	def get_template_configs(self):
@@ -84,7 +97,11 @@ class Geeks3DPlugin(
 			push_server_shutdown=False,
 			push_server_connected=False,
 			push_server_disconnected=False,
-			push_token=str(uuid.uuid4())
+			push_token=str(uuid.uuid4()),
+			server_ip = "0.0.0.0",
+			server_port = "80",
+			plugin_version = "v1",
+			plugin_qr = "{}"
 		)
 
 	def on_settings_save(self, data):
@@ -134,8 +151,38 @@ class Geeks3DPlugin(
 
 
 	def on_after_startup(self):
+		t = threading.Timer(0,self.get_ip_and_save)
+		t.start()
 		self._settings.save()
 		self.settings = self._settings
+
+	def get_ip_and_save(self):
+		server_ip = [(s.connect((self._settings.global_get(["server","onlineCheck","host"]), self._settings.global_get(["server","onlineCheck","port"]))), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
+		server_port = self._settings.global_get(["server", "port"])
+		self._settings.set(["server_ip"], str(server_ip))
+		self._settings.set(["server_port"], str(server_port))
+		self._settings.save()
+		self.create_qr()
+
+	def create_qr(self):
+		self._settings.set(["plugin_qr"], json.dumps(
+			{
+				"host" : self._settings.get(["server_ip"]),
+				"port" : self._settings.get(["server_port"]),
+				"key" : self._settings.global_get(["api", "key"]),
+				"name" : self._settings.global_get(["appearance", "name"]),
+				"color" : self._settings.global_get(["appearance","color"]),
+				"version" : self._settings.get(["plugin_version"]),
+				"webcam_enabled" : self._settings.global_get(["webcam", "webcamEnabled"]),
+				"webcam_stream" : self._settings.global_get(["webcam", "streamUrl"]),
+				"webcam_snapshot" : self._settings.global_get(["webcam", "snapshotUrl"]),
+				"push_token" : self._settings.get(["push_token"])
+			}
+		))
+
+		self._settings.save()
+
+
 
 # If you want your plugin to be registered within OctoPrint under a different name than what you defined in setup.py
 

@@ -30,6 +30,7 @@ class Geeks3DApi:
 		token = str(uuid.uuid4())
 		self._plugin.settings.set(["push_token"], token)
 		self._plugin.settings.save()
+		self._plugin.create_qr()
 		return flask.jsonify(dict(code=200, token=token))
 
 	def check(self):
