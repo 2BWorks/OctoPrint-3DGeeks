@@ -1,4 +1,4 @@
-# OctoPrint-3DGeeks
+# OctoPrint-3DGeeks (Coming soon to Play Store)
 
 This plugin is created as a companion plugin to the [3D Geeks](https://www.3dgeeks.app) app. 
 
