@@ -1,0 +1,114 @@
+<form class="form-horizontal">
+
+
+<h1><img width="48px" src="https://www.3dgeeks.app/assets/img/index-app/ic_launcher.png" />&nbsp;3D Geeks</h1>
+
+This plugin allows you to receive printer updates directly on your phone, even when you are not on the same network. To get started you only need to create a new OctoPrint from within in the app.
+Don't have the app? you can download it here:
+
+<br><br>
+
+<a target="_blank" href='https://www.3dgeeks.app/u/android'><img width="175px" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a>
+
+<BR>
+
+
+    <h2>Push notifications</h2>
+    Your unique push token, do not share with anyone else.
+        <div class="input-append input-block-level">
+                        <input type="text" readonly="readonly" id="settings-geeks3d-token" data-bind="value: settings.plugins.geeks3d.push_token, attr: {placeholder: 'N/A'}" placeholder="N/A">
+                        <a class="btn add-on" id="geeks3d_regenerate_token" title="Generate new 3D Geeks Key"><i class="fa fa-refresh"></i></a>
+                    </div>
+
+
+    <button type="button" id="geeks3d_test_notification" class="btn btn-outline-primary">Send a test notification</button>
+
+    <h3>Print status</h3>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_print_started"  data-bind="checked: settings.plugins.geeks3d.push_print_started">
+      <label class="form-check-label" for="push_print_started">
+        Print started
+      </label>
+    </div>
+
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_print_progress"  data-bind="checked: settings.plugins.geeks3d.push_print_progress">
+      <label class="form-check-label" for="push_print_progress">
+        Print Progress
+      </label>
+    </div>
+
+     <div  id="progress_interval">
+
+            <input type="radio" id="push_print_progress_interval2" data-bind="checked: settings.plugins.geeks3d.push_print_progress_interval" value="10">&nbsp;Every 10th percent<br>
+            <input type="radio" id="push_print_progress_interval3" data-bind="checked: settings.plugins.geeks3d.push_print_progress_interval" value="25">&nbsp;Every 25th percent<br>
+            <input type="radio" id="push_print_progress_interval4" data-bind="checked: settings.plugins.geeks3d.push_print_progress_interval" value="50">&nbsp;Every 50th percent<br>
+        </div>
+
+
+<BR>
+<BR>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_print_cancelled"  data-bind="checked: settings.plugins.geeks3d.push_print_cancelled">
+      <label class="form-check-label" for="push_print_cancelled">
+        Print Cancelled
+      </label>
+    </div>
+
+
+
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_print_paused"  data-bind="checked: settings.plugins.geeks3d.push_print_paused">
+      <label class="form-check-label" for="push_print_paused">
+        Print Paused
+      </label>
+    </div>
+
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_print_resumed"  data-bind="checked: settings.plugins.geeks3d.push_print_resumed">
+      <label class="form-check-label" for="push_print_resumed">
+        Print Resumed
+      </label>
+    </div>
+
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_print_finished"  data-bind="checked: settings.plugins.geeks3d.push_print_finished">
+      <label class="form-check-label" for="push_print_finished">
+        Print Finished
+      </label>
+    </div>
+
+    <h3>OctoPrint status</h3>
+  <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_server_connected"  data-bind="checked: settings.plugins.geeks3d.push_server_connected">
+      <label class="form-check-label" for="push_server_connected">
+        Server connected
+      </label>
+    </div>
+
+  <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_server_disconnected"  data-bind="checked: settings.plugins.geeks3d.push_server_disconnected">
+      <label class="form-check-label" for="push_server_disconnected">
+        Server disconnected
+      </label>
+    </div>
+
+  <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_server_startup"  data-bind="checked: settings.plugins.geeks3d.push_server_startup">
+      <label class="form-check-label" for="push_server_startup">
+        Server startup
+      </label>
+    </div>
+
+  <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="push_server_shutdown"  data-bind="checked: settings.plugins.geeks3d.push_server_shutdown">
+      <label class="form-check-label" for="push_server_shutdown">
+        Server shutdown
+      </label>
+    </div>
+
+</form>
