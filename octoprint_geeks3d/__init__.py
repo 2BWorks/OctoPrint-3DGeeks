@@ -150,7 +150,7 @@ class Geeks3DPlugin(
 		self.event_handler.handle_event( event, payload)
 
 	def on_after_startup(self):
-		t = threading.Timer(0,self.get_ip_and_save)
+		t = threading.Timer(1,self.get_ip_and_save)
 		t.start()
 		self._settings.save()
 		self.settings = self._settings
@@ -179,6 +179,8 @@ class Geeks3DPlugin(
 				"push_token" : self._settings.get(["push_token"])
 			}
 		))
+
+		self._logger.info("Creating QR...")
 
 		self._settings.save()
 
