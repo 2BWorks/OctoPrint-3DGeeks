@@ -150,7 +150,7 @@ class Geeks3DPlugin(
 		self.event_handler.handle_event( event, payload)
 
 	def on_after_startup(self):
-		t = threading.Timer(1,self.get_ip_and_save)
+		t = threading.Timer(10,self.get_ip_and_save)
 		t.start()
 		self._settings.save()
 		self.settings = self._settings
