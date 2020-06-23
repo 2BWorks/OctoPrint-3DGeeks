@@ -167,7 +167,7 @@ class Geeks3DPlugin(
 		self._settings.set(["plugin_qr"], json.dumps(
 			{
 				"host" : self._settings.get(["server_ip"]),
-				"port" : self._settings.get(["server_port"]),
+				"port" : "",
 				"key" : self._settings.global_get(["api", "key"]),
 				"name" : self._settings.global_get(["appearance", "name"]),
 				"color" : self._settings.global_get(["appearance","color"]),
