@@ -173,8 +173,9 @@ class Geeks3DPlugin(
 				"color" : self._settings.global_get(["appearance","color"]),
 				"version" : self._settings.get(["plugin_version"]),
 				"webcam_enabled" : self._settings.global_get(["webcam", "webcamEnabled"]),
-				"webcam_stream" : self._settings.global_get(["webcam", "streamUrl"]),
-				"webcam_snapshot" : self._settings.global_get(["webcam", "snapshotUrl"]),
+				"webcam_stream" : self._settings.global_get(["webcam", "stream"]),
+				"webcam_snapshot" : self._settings.global_get(["webcam", "snapshot"]),
+				"bitrate" : self._settings.global_get(["webcam", "bitrate"]),
 				"push_token" : self._settings.get(["push_token"])
 			}
 		))
